@@ -46,11 +46,13 @@ public:
 			}
 		}
 	}
-	void collect(const std::function<void(const T&)> &cF, std::uint16_t bg=0, std::uint16_t end=0) {
-
+	void collect(
+	    const std::function<void(const T&)> &cF, 
+	    std::uint16_t bg=0, std::uint16_t end=0) {
+     	/*
 		tunnelInfo aF{cF, bg, end, 0,1};
 
-		/*
+		
 		if(((std::uint16_t)(this->tunnel.size()))>= bg){
 		    //cF(this->data);
 		    aF.total = 1; aF.active = 1;
@@ -60,7 +62,7 @@ public:
 		    */
 
 		this->ctunnel = this->tunnel.size();
-		this->tunnel.push_back(aF);
+		this->tunnel.emplace_back(tunnelInfo{cF, bg, end, 0,1});
 
 	}
 
